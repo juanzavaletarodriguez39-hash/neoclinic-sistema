@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoClinic - Sistema Integral de Datos Clínicos Neonatales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .card-elegant {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .card-elegant:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-gradient {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            animation: staggerIn 0.8s ease forwards;
+        }
+        
+        .stagger-item:nth-child(1) { animation-delay: 0.2s; }
+        .stagger-item:nth-child(2) { animation-delay: 0.4s; }
+        .stagger-item:nth-child(3) { animation-delay: 0.6s; }
+        .stagger-item:nth-child(4) { animation-delay: 0.8s; }
+        .stagger-item:nth-child(5) { animation-delay: 1.0s; }
+        .stagger-item:nth-child(6) { animation-delay: 1.2s; }
+        
+        @keyframes staggerIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            }
+        }
+        
+        .morphing-bg {
+            background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #f97316);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .objective-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9));
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .objective-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="morphing-bg min-h-full">
+    <!-- Slide 1: Portada -->
+    <section class="slide">
+        <div class="card-elegant p-12 max-w-4xl w-full text-center fade-in">
+            <div class="floating mb-8">
+                <div class="w-24 h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 rounded-3xl flex items-center justify-center mx-auto shadow-2xl pulse-glow">
+                    <!-- Logo SVG -->
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 8C28 8 31 11 31 15C31 19 28 22 24 22C20 22 17 19 17 15C17 11 20 8 24 8Z" fill="white" opacity="0.9"/>
+                        <path d="M8 28L12 28L14 24L17 32L20 18L23 38L26 24L28 28L40 28" stroke="white" stroke-width="3" fill="none" opacity="0.8"/>
+                        <rect x="22" y="32" width="4" height="12" rx="2" fill="white" opacity="0.7"/>
+                        <rect x="16" y="37" width="16" height="4" rx="2" fill="white" opacity="0.7"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="text-5xl font-bold mb-4">
+                <span class="icon-gradient">NeoClinic</span>
+            </h1>
+            <h2 class="text-2xl text-gray-700 mb-6">Sistema Integral de Datos Clínicos Neonatales</h2>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 mb-8">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Sistema integral para optimizar el cuidado de enfermería
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6 text-center">
+                <div class="stagger-item">
+                    <div class="text-3xl mb-2">👶</div>
+                    <div class="text-sm font-medium text-gray-600">Cuidado Neonatal</div>
+                </div>
+                <div class="stagger-item">
+                    <div class="text-3xl mb-2">📊</div>
+                    <div class="text-sm font-medium text-gray-600">Datos Precisos</div>
+                </div>
+                <div class="stagger-item">
+                    <div class="text-3xl mb-2">🤱</div>
+                    <div class="text-sm font-medium text-gray-600">Enfermería Especializada</div>
+                </div>
+            </div>
+            
+            <!-- Información del Autor - EDITABLE -->
+            <div class="mt-8 bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                <h3 class="text-lg font-bold text-gray-700 mb-4">📋 Información del Proyecto</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label for="nombreAutor" class="block text-xs font-medium text-gray-600 mb-1">Presentado por:</label>
+                        <input type="text" id="nombreAutor" 
+                               class="w-full p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                               placeholder="Tu nombre completo"
+                               value="">
+                    </div>
+                    <div>
+                        <label for="nombreAsesora" class="block text-xs font-medium text-gray-600 mb-1">Asesora:</label>
+                        <input type="text" id="nombreAsesora" 
+                               class="w-full p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                               placeholder="Nombre de la asesora"
+                               value="">
+                    </div>
+                    <div>
+                        <label for="fechaPresentacion" class="block text-xs font-medium text-gray-600 mb-1">Fecha de Presentación:</label>
+                        <input type="date" id="fechaPresentacion" 
+                               class="w-full p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="institucion" class="block text-xs font-medium text-gray-600 mb-1">Institución:</label>
+                        <input type="text" id="institucion" 
+                               class="w-full p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                               placeholder="Universidad/Institución"
+                               value="">
+                    </div>
+                    <div>
+                        <label for="programa" class="block text-xs font-medium text-gray-600 mb-1">Programa Académico:</label>
+                        <input type="text" id="programa" 
+                               class="w-full p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500" 
+                               placeholder="Ej: Licenciatura en Enfermería"
+                               value="">
+                    </div>
+                </div>
+                
+                <div class="text-center mb-4">
+                    <button type="button" onclick="guardarInfoAutor()" 
+                            class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg">
+                        💾 Guardar Información del Proyecto
+                    </button>
+                </div>
+                
+                <!-- Información guardada (se muestra después de guardar) -->
+                <div id="infoAutorGuardada" class="hidden">
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <h4 class="font-bold text-green-800 mb-2">✅ Información Guardada:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-green-700">
+                            <div><strong>Autor:</strong> <span id="autorMostrado"></span></div>
+                            <div><strong>Asesora:</strong> <span id="asesoraMostrada"></span></div>
+                            <div><strong>Fecha:</strong> <span id="fechaMostrada"></span></div>
+                            <div><strong>Institución:</strong> <span id="institucionMostrada"></span></div>
+                            <div class="md:col-span-2"><strong>Programa:</strong> <span id="programaMostrado"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resto del contenido permanece igual... -->
+    <!-- [Aquí va todo el resto del código del sistema] -->
+
+    <script>
+        // Función para guardar información del autor
+        function guardarInfoAutor() {
+            const autor = document.getElementById('nombreAutor').value;
+            const asesora = document.getElementById('nombreAsesora').value;
+            const fecha = document.getElementById('fechaPresentacion').value;
+            const institucion = document.getElementById('institucion').value;
+            const programa = document.getElementById('programa').value;
+            
+            if (!autor || !asesora) {
+                alert('Por favor ingresa al menos tu nombre y el de tu asesora');
+                return;
+            }
+            
+            // Guardar en localStorage
+            const infoAutor = {
+                autor: autor,
+                asesora: asesora,
+                fecha: fecha,
+                institucion: institucion,
+                programa: programa,
+                fechaGuardado: new Date().toISOString()
+            };
+            
+            localStorage.setItem('neoclinic_info_autor', JSON.stringify(infoAutor));
+            
+            // Mostrar información guardada
+            document.getElementById('autorMostrado').textContent = autor;
+            document.getElementById('asesoraMostrada').textContent = asesora;
+            document.getElementById('fechaMostrada').textContent = fecha ? new Date(fecha).toLocaleDateString('es-ES') : 'No especificada';
+            document.getElementById('institucionMostrada').textContent = institucion || 'No especificada';
+            document.getElementById('programaMostrado').textContent = programa || 'No especificado';
+            
+            document.getElementById('infoAutorGuardada').classList.remove('hidden');
+            
+            // Actualizar título del documento
+            document.title = `NeoClinic - ${autor}`;
+            
+            // Mostrar confirmación
+            mostrarNotificacion('✅ Información del proyecto guardada exitosamente', 'success');
+        }
+        
+        // Función para cargar información del autor al iniciar
+        function cargarInfoAutor() {
+            const infoGuardada = localStorage.getItem('neoclinic_info_autor');
+            if (infoGuardada) {
+                const info = JSON.parse(infoGuardada);
+                
+                document.getElementById('nombreAutor').value = info.autor || '';
+                document.getElementById('nombreAsesora').value = info.asesora || '';
+                document.getElementById('fechaPresentacion').value = info.fecha || '';
+                document.getElementById('institucion').value = info.institucion || '';
+                document.getElementById('programa').value = info.programa || '';
+                
+                // Mostrar información si está completa
+                if (info.autor && info.asesora) {
+                    document.getElementById('autorMostrado').textContent = info.autor;
+                    document.getElementById('asesoraMostrada').textContent = info.asesora;
+                    document.getElementById('fechaMostrada').textContent = info.fecha ? new Date(info.fecha).toLocaleDateString('es-ES') : 'No especificada';
+                    document.getElementById('institucionMostrada').textContent = info.institucion || 'No especificada';
+                    document.getElementById('programaMostrado').textContent = info.programa || 'No especificado';
+                    
+                    document.getElementById('infoAutorGuardada').classList.remove('hidden');
+                    document.title = `NeoClinic - ${info.autor}`;
+                }
+            }
+        }
+        
+        // Función para mostrar notificaciones
+        function mostrarNotificacion(mensaje, tipo = 'info') {
+            const colores = {
+                success: 'bg-green-600',
+                error: 'bg-red-600',
+                info: 'bg-blue-600',
+                warning: 'bg-yellow-600'
+            };
+            
+            const notificacion = document.createElement('div');
+            notificacion.className = `fixed top-4 right-4 ${colores[tipo]} text-white p-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            notificacion.textContent = mensaje;
+            
+            document.body.appendChild(notificacion);
+            
+            // Animar entrada
+            setTimeout(() => {
+                notificacion.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                notificacion.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (document.body.contains(notificacion)) {
+                        document.body.removeChild(notificacion);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Cargar información al iniciar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarInfoAutor();
+            
+            // También cargar en reportes
+            document.getElementById('clinicalDataForm').addEventListener('submit', function(e) {
+                // Incluir información del autor en reportes
+                const infoAutor = JSON.parse(localStorage.getItem('neoclinic_info_autor') || '{}');
+                
+                if (infoAutor.autor) {
+                    // Agregar información del autor al reporte
+                    const autorInfo = `
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-indigo-700 mb-4">👨‍⚕️ Información del Proyecto</h4>
+                            <div class="space-y-2 text-sm">
+                                <div><strong>Autor:</strong> ${infoAutor.autor}</div>
+                                <div><strong>Asesora:</strong> ${infoAutor.asesora}</div>
+                                <div><strong>Fecha:</strong> ${infoAutor.fecha ? new Date(infoAutor.fecha).toLocaleDateString('es-ES') : 'No especificada'}</div>
+                                <div><strong>Institución:</strong> ${infoAutor.institucion || 'No especificada'}</div>
+                                <div><strong>Programa:</strong> ${infoAutor.programa || 'No especificado'}</div>
+                                <div><strong>Sistema:</strong> NeoClinic v1.0</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Agregar al final del resumen clínico
+                    const summary = document.getElementById('clinicalSummary');
+                    if (summary) {
+                        summary.innerHTML += autorInfo;
+                    }
+                }
+            });
+        });
+        
+        // [Resto del código JavaScript permanece igual...]
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9927e45697df649a',t:'MTc2MTEyNDU0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
